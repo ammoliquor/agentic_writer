@@ -23,9 +23,9 @@ export default function Home() {
           setIsPlaying(false);
           return TOTAL_DURATION;
         }
-        return prev + 1;
+        return prev + 0.1;
       });
-    }, 1000); // 1-second increments
+    }, 100); // 100ms increments for smoother synchronization
     return () => clearInterval(interval);
   }, [isPlaying]);
 

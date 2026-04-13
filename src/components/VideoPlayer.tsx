@@ -9,9 +9,10 @@ interface VideoPlayerProps {
   onTimeUpdate: (time: number) => void;
   onPlayPause: () => void;
   totalDuration: number;
+  videoId?: string;
 }
 
-export default function VideoPlayer({ currentTime, isPlaying, onTimeUpdate, onPlayPause, totalDuration }: VideoPlayerProps) {
+export default function VideoPlayer({ currentTime, isPlaying, onTimeUpdate, onPlayPause, totalDuration, videoId = 'rfscVS0vtbw' }: VideoPlayerProps) {
   const [showControls, setShowControls] = useState(true);
   const [isPiP, setIsPiP] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -34,7 +35,7 @@ export default function VideoPlayer({ currentTime, isPlaying, onTimeUpdate, onPl
       <div className="relative w-full" style={{ paddingBottom: isPiP ? '0' : '56.25%', height: isPiP ? '100%' : 'auto' }}>
         <iframe
           ref={iframeRef}
-          src={`https://www.youtube.com/embed/rfscVS0vtbw?enablejsapi=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}&controls=0&rel=0`}
+          src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}&controls=0&rel=0`}
           className="absolute top-0 left-0 w-full h-full"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
