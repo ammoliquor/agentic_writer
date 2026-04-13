@@ -67,7 +67,7 @@ function highlightConcepts(code: string, onConceptClick: (concept: Concept) => v
   return <>{parts}</>;
 }
 
-export default function CodeTranscript({ visibleLines, allLines, onLineClick, onConceptClick }: CodeTranscriptProps) {
+export default function CodeTranscript({ visibleLines, allLines, onLineClick, onConceptClick, onSeek }: CodeTranscriptProps) {
   const [hoveredLine, setHoveredLine] = useState<number | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -110,7 +110,7 @@ export default function CodeTranscript({ visibleLines, allLines, onLineClick, on
                 className={`relative flex group cursor-pointer rounded transition-all duration-150 ${
                   isActive ? 'bg-blue-500/20 border-l-2 border-blue-400' : 'border-l-2 border-transparent hover:bg-white/5 hover:border-white/20'
                 }`}
-                onClick={() => onLineClick(line)}
+                onClick={() => { onLineClick(line); onSeek(line.timestamp); }}
                 onMouseEnter={() => setHoveredLine(line.line)}
                 onMouseLeave={() => setHoveredLine(null)}
               >

@@ -13,7 +13,7 @@ export interface Concept {
   fullDesc: string;
   docsLink: string;
   examples: string[];
-  color: string;
+  color: 'yellow' | 'blue' | 'purple' | 'green' | 'orange';
 }
 
 export interface Annotation {

@@ -25,7 +25,7 @@ export default function Home() {
         }
         return prev + 1;
       });
-    }, 100);
+    }, 1000); // 1-second increments
     return () => clearInterval(interval);
   }, [isPlaying]);
 
